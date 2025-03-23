@@ -1,0 +1,248 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #111;
+    padding: 1rem 2rem;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.2rem;
+    color: white;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+    .nav-links li a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+        .nav-links li a:hover {
+            text-decoration: underline;
+        }
+
+main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+}
+
+.hero {
+    text-align: center;
+    max-width: 600px;
+}
+
+    .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: #111;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+        color: #555;
+    }
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content input {
+    padding: 10px;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.modal-content button {
+    padding: 10px;
+    background-color: #111;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.modal-content button:hover {
+        background-color: #333;
+    }
+
+.center-top {
+    display: block;
+    padding: 5rem 2rem 2rem;
+}
+
+.policy-text {
+    max-width: 700px;
+    text-align: left;
+    margin: 0 auto;
+}
+
+.page-policy {
+    padding: 5rem 2rem;
+    display: block;
+}
+
+/* Chat box */
+/* Chat button - bottom right now */
+.chat-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #111;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    z-index: 1000;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Chat box - now wider & taller */
+.chat-box {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 400px;
+    height: 450px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    display: none;
+    flex-direction: column;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+/* Header */
+.chat-header {
+    background-color: #111;
+    color: #fff;
+    padding: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-size: 16px;
+}
+
+.close-chat {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/* Body */
+.chat-body {
+    padding: 14px;
+    flex: 1;
+    overflow-y: auto;
+    font-size: 15px;
+}
+
+    .chat-body .bot-msg {
+        background-color: #f1f1f1;
+        padding: 10px;
+        border-radius: 8px;
+        margin-bottom: 12px;
+    }
+
+/* Input */
+.chat-input {
+    display: flex;
+    border-top: 1px solid #ddd;
+}
+
+    .chat-input input {
+        flex: 1;
+        border: none;
+        padding: 12px;
+        font-size: 14px;
+        border-bottom-left-radius: 10px;
+    }
+
+    .chat-input button {
+        background-color: #111;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        font-size: 14px;
+        border-bottom-right-radius: 10px;
+        cursor: pointer;
+    }
+
+
+
+
+footer {
+    background-color: #eee;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+}

@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f2b78b2b-0593-4a43-b334-402e16c65f17</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>src\VHACK_NeoTrade_AI.py</StartupFile>
+    <StartupFile>src\app.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,7 +22,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="src\VHACK_NeoTrade_AI.py" />
+    <Compile Include="src\app.py" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
@@ -38,10 +38,18 @@
   <ItemGroup>
     <Folder Include="data\" />
     <Folder Include="src\" />
+    <Folder Include="src\static\" />
+    <Folder Include="src\static\css\" />
+    <Folder Include="src\static\js\" />
+    <Folder Include="src\templates\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="data\dummy_data.csv" />
     <Content Include="requirements.txt" />
+    <Content Include="src\static\css\style.css" />
+    <Content Include="src\static\js\main.js" />
+    <Content Include="src\templates\index.html" />
+    <Content Include="src\templates\layout.html" />
+    <Content Include="src\templates\policy.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
