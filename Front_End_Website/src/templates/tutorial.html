@@ -1,0 +1,68 @@
+﻿{% extends 'layout.html' %}
+
+{% block content %}
+<div class="tutorial-wrapper">
+
+    <!-- 📚 LEFT COLUMN: Videos & Websites -->
+    <div class="tutorial-left">
+        <h1>📚 Tutorials & Learning</h1>
+        <p>Explore videos, websites, or ask our AI Tutor for help!</p>
+
+        <h2>🎥 Recommended YouTube Videos</h2>
+        <div class="video-grid">
+            <a href="https://www.youtube.com/watch?v=2tY3S0rFovs" target="_blank" class="video-card">
+                <img src="https://img.youtube.com/vi/2tY3S0rFovs/hqdefault.jpg">
+                <div class="video-info"><h3>Beginner's Guide to Cryptocurrency (Coin Bureau)</h3></div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=0UBk3FoqW9Q" target="_blank" class="video-card">
+                <img src="https://img.youtube.com/vi/0UBk3FoqW9Q/hqdefault.jpg">
+                <div class="video-info"><h3>What is AI Trading? Explained for Beginners</h3></div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=YH_E-JTqFJU" target="_blank" class="video-card">
+                <img src="https://img.youtube.com/vi/YH_E-JTqFJU/hqdefault.jpg">
+                <div class="video-info"><h3>Trading with Machine Learning - Intro for Beginners</h3></div>
+            </a>
+        </div>
+
+        <h2 style="margin-top: 40px;">🌐 Helpful Websites</h2>
+        <div class="website-grid">
+            <a href="https://www.investopedia.com/" target="_blank" class="website-card">
+                <img src="https://www.investopedia.com/favicon.ico">
+                <div class="website-info">
+                    <h3>Investopedia</h3>
+                    <p>Learn the basics of crypto, finance, and trading in clear language.</p>
+                </div>
+            </a>
+            <a href="https://academy.binance.com/" target="_blank" class="website-card">
+                <img src="https://academy.binance.com/favicon.ico">
+                <div class="website-info">
+                    <h3>Binance Academy</h3>
+                    <p>Free lessons on blockchain, trading, and Web3 from Binance.</p>
+                </div>
+            </a>
+            <a href="https://www.coinmarketcap.com/alexandria/" target="_blank" class="website-card">
+                <img src="https://coinmarketcap.com/favicon.ico">
+                <div class="website-info">
+                    <h3>CMC Alexandria</h3>
+                    <p>Explore a large collection of crypto education content.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- 🤖 RIGHT COLUMN: Gemini AI -->
+    <div class="tutorial-right">
+        <div class="chat-box" id="tchatBox" style="display: flex; flex-direction: column;">
+            <div class="chat-header">💬 Ask AI Tutor (Tchat)</div>
+            <div class="chat-body" id="tchatBody">
+                <p>Hi! I’m Tchat. Ask me anything about tutorials or how to use NeoTrade AI.</p>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="tchatInput" placeholder="Type your tutorial question..." />
+                <button id="sendTchat">Send</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

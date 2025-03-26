@@ -1,0 +1,735 @@
+/* -----------------------------
+   GLOBAL STYLES
+----------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #1F1F1F;
+    padding: 1rem 2rem;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.2rem;
+    color: white;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+    .nav-links li a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+        .nav-links li a:hover {
+            text-decoration: underline;
+        }
+
+main {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 4rem 2rem;
+}
+
+.hero {
+    text-align: center;
+    max-width: 600px;
+}
+
+    .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: #111;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+        color: #555;
+    }
+
+/* -----------------------------
+   MODALS
+----------------------------- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content input {
+    padding: 10px;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.modal-content button {
+    padding: 10px;
+    background-color: #111;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    .modal-content button:hover {
+        background-color: #333;
+    }
+
+/* -----------------------------
+   POLICY & PAGES
+----------------------------- */
+.center-top {
+    display: block;
+    padding: 5rem 2rem 2rem;
+}
+
+.policy-text {
+    max-width: 700px;
+    text-align: left;
+    margin: 0 auto;
+}
+
+.page-policy {
+    padding: 5rem 2rem;
+    display: block;
+}
+
+/* -----------------------------
+   CHAT WIDGET
+----------------------------- */
+.chat-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #111;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    z-index: 1000;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.chat-box {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 400px;
+    height: 450px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    display: none;
+    flex-direction: column;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.chat-header {
+    background-color: #111;
+    color: #fff;
+    padding: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-size: 16px;
+    cursor: move;
+}
+
+.close-chat {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.chat-body {
+    padding: 14px;
+    flex: 1;
+    overflow-y: auto;
+    font-size: 15px;
+}
+
+    .chat-body .bot-msg {
+        background-color: #f1f1f1;
+        padding: 10px;
+        border-radius: 8px;
+        margin-bottom: 12px;
+    }
+
+.chat-input {
+    display: flex;
+    border-top: 1px solid #ddd;
+}
+
+    .chat-input input {
+        flex: 1;
+        border: none;
+        padding: 12px;
+        font-size: 14px;
+        border-bottom-left-radius: 10px;
+    }
+
+    .chat-input button {
+        background-color: #111;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        font-size: 14px;
+        border-bottom-right-radius: 10px;
+        cursor: pointer;
+    }
+
+/* -----------------------------
+   TUTORIAL PAGE
+----------------------------- */
+.tutorial-wrapper {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    padding: 2rem;
+    position: relative;
+}
+
+.tutorial-left {
+    flex: 2;
+}
+
+.tutorial-right {
+    flex: 1;
+    min-width: 500px;
+    position: fixed;
+    top: 160px;
+    right: 80px;
+    width: 320px;
+    z-index: 999;
+}
+
+    .tutorial-right .chat-box {
+        position: fixed;
+        width: 400px;
+        height: 450px;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        padding: 0;
+        resize: none;
+    }
+
+/* Videos & Websites */
+.video-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.video-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+    transition: transform 0.2s ease;
+}
+
+    .video-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+    }
+
+    .video-card img {
+        width: 120px;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .video-card .video-info h3 {
+        margin: 0;
+        font-size: 1rem;
+        color: #222;
+    }
+
+.website-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.website-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+    transition: transform 0.2s ease;
+}
+
+    .website-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+    }
+
+    .website-card img {
+        width: 48px;
+        height: 48px;
+        border-radius: 8px;
+    }
+
+    .website-card .website-info h3 {
+        margin: 0;
+        font-size: 1rem;
+        color: #222;
+    }
+
+    .website-card .website-info p {
+        margin: 4px 0 0;
+        font-size: 0.9rem;
+        color: #555;
+    }
+
+/* -----------------------------
+   3-COLUMN COMMUNITY LAYOUT
+----------------------------- */
+.community-layout {
+    display: flex;
+    max-width: 1600px; /* or however wide you want */
+    margin: 0 auto;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+/* Left Sidebar */
+.sidebar-left {
+    width: 220px; /* fixed or flexible width */
+    display: flex;
+    flex-direction: column;
+    background-color: #111; /* or your choice */
+    color: #fff;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+    .nav-menu .menu-item {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+        .nav-menu .menu-item:hover {
+            text-decoration: underline;
+        }
+
+.btn-post {
+    margin-top: 1rem;
+    padding: 0.6rem 1rem;
+    background-color: #1d9bf0; /* typical Twitter blue */
+    color: #fff;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+}
+
+/* Center Feed */
+.feed {
+    flex: 1; /* take available space */
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+    .feed h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+.post-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 1rem;
+}
+
+    .post-form textarea {
+        width: 100%;
+        resize: none;
+        padding: 0.5rem;
+    }
+
+    .post-form button {
+        align-self: flex-end;
+        background-color: #1d9bf0;
+        color: #fff;
+        border: none;
+        border-radius: 9999px;
+        padding: 0.6rem 1.2rem;
+        cursor: pointer;
+    }
+
+.feed-item {
+    background-color: #f5f7fa;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+    .feed-item p {
+        margin: 0.5rem 0;
+    }
+
+.timestamp {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+/* Right Sidebar */
+.sidebar-right {
+    width: 300px; /* or flexible width */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.trends, .who-to-follow {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+    .trends h2, .who-to-follow h2 {
+        margin-bottom: 0.8rem;
+    }
+
+/* Example user suggestion box */
+.user-suggestion {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 0.8rem;
+}
+
+    .user-suggestion img {
+        width: 40px;
+        height: 40px;
+        border-radius: 9999px;
+    }
+
+    .user-suggestion .info {
+        display: flex;
+        flex-direction: column;
+    }
+
+        .user-suggestion .info p {
+            margin: 0;
+        }
+
+        .user-suggestion .info button {
+            background-color: #1d9bf0;
+            color: #fff;
+            border: none;
+            border-radius: 9999px;
+            padding: 0.3rem 1rem;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+/* -----------------------------
+   X-FEED (BLACK THEME) 
+----------------------------- */
+.x-feed-container {
+    max-width: 600px; /* narrower feed, like X */
+    margin: 0 auto; /* center horizontally */
+    padding: 1rem;
+    background-color: #000; /* black background for dark theme */
+    color: #eee; /* light text */
+    min-height: 100vh; /* fill the screen */
+}
+
+/* Each post container in X style feed */
+.x-post {
+    border-bottom: 1px solid #333;
+    padding: 1rem 0;
+}
+
+/* Header row: avatar + user info side by side */
+.x-post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.x-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 9999px; /* round profile pic */
+    margin-right: 0.8rem;
+}
+
+/* Name and handle stacked */
+.x-post-userinfo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.x-username {
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.x-handle {
+    font-size: 0.85rem;
+    color: #888;
+    margin: 0;
+}
+
+.x-timestamp {
+    font-size: 0.75rem;
+    color: #555;
+    margin-top: 2px;
+}
+
+/* Post text */
+.x-post-content {
+    white-space: pre-line; /* keep line breaks if you want multiline */
+    margin: 0.5rem 0 1rem;
+}
+
+/* Action row (replies, likes, views) */
+.x-post-actions {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.85rem;
+    color: #999;
+}
+
+    .x-post-actions span {
+        cursor: pointer;
+    }
+
+        .x-post-actions span:hover {
+            text-decoration: underline;
+        }
+
+/* -----------------------------
+   COMMUNITY DARK FEED 
+----------------------------- */
+.community-wrapper {
+    width: 90%; /* increased from 600px to 900px for a wider panel */
+    max-width: 1500px;
+    margin: 2rem auto; /* center horizontally, top/bottom margin */
+    background-color: #111; /* dark background for the feed */
+    padding: 1.5rem; /* spacing around edges */
+    border-radius: 10px; /* smooth corners */
+    color: #fff; /* white text on dark background */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* slight drop shadow */
+}
+
+    /* The post form at the top, inside .community-wrapper */
+    .community-wrapper .post-form {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+    }
+
+        .community-wrapper .post-form textarea {
+            resize: none;
+            background-color: #222;
+            border: 1px solid #444;
+            border-radius: 6px;
+            color: #fff;
+            padding: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .community-wrapper .post-form button {
+            align-self: flex-end;
+            margin-top: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: #1d9bf0; /* Twitter-ish blue */
+            color: #fff;
+            border: none;
+            border-radius: 9999px;
+            cursor: pointer;
+        }
+
+            .community-wrapper .post-form button:hover {
+                background-color: #188fdd;
+            }
+
+    /* Heading inside .community-wrapper */
+    .community-wrapper h2 {
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+
+/* Each post item box inside .community-wrapper */
+.post-item {
+    display: block; /* Ensures each post is a block element */
+    width: 100%; /* Takes the full parent container width */
+    clear: both; /* Prevents floats pushing the next post to the side */
+    margin-bottom: 1rem; /* Some space between posts */
+}
+
+    .post-item:last-child {
+        border-bottom: none; /* no border on last post */
+    }
+
+/* Top area: avatar + user info for each post */
+.post-header {
+    display: flex; /* a simple fix: use flex for avatar + user info */
+    align-items: center; /* center the avatar and text vertically */
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 9999px;
+}
+
+.post-userinfo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.username {
+    font-weight: bold;
+    margin: 0; /* remove default p margin */
+}
+
+.handle {
+    font-size: 0.85rem;
+    color: #999;
+    margin: 2px 0 0 0;
+}
+
+.timestamp {
+    font-size: 0.75rem;
+    color: #777;
+    margin: 2px 0 0 0;
+}
+
+/* Post text inside .post-content */
+.post-content {
+    /* This makes very long words or text wrap instead of pushing the layout sideways */
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Post footer actions (likes, replies, etc.) */
+.post-actions {
+    font-size: 0.85rem;
+    color: #999;
+}
+
+    .post-actions span {
+        margin-right: 1rem;
+        cursor: pointer;
+    }
+
+        .post-actions span:hover {
+            color: #ccc;
+        }
+
+/* -----------------------------
+   Trading
+----------------------------- */
+
+
+/* -----------------------------
+   FOOTER
+----------------------------- */
+footer {
+    background-color: #eee;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+}

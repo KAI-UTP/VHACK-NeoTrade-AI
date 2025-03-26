@@ -1,0 +1,32 @@
+﻿{% extends "layout.html" %}
+
+{% block title %}Home | NeoTrade AI{% endblock %}
+
+{% block content %}
+<main>
+    <div class="hero">
+        <h1>Welcome to NeoTrade AI</h1>
+        <p>This tool provides AI-driven crypto trading signals and insights. Explore our features to begin trading smarter.</p>
+    </div>
+</main>
+
+<!-- Chat Button -->
+<div class="chat-btn" id="chatToggle">💬 Chat with us</div>
+
+<!-- Chat Box -->
+<div class="chat-box" id="chatBox">
+    <div class="chat-header">
+        <span>Need Help?</span>
+        <span class="close-chat" id="closeChat">&times;</span>
+    </div>
+    <div class="chat-body" id="chatBody">
+        <p class="bot-msg">Hi! How can we assist you?</p>
+    </div>
+    <div class="chat-input">
+        <input type="text" id="chatInput" placeholder="Type your message..." />
+        <button id="sendChat">Send</button>
+    </div>
+</div>
+
+{% endblock %}
+
