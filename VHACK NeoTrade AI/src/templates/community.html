@@ -1,0 +1,216 @@
+﻿{% extends "layout.html" %}
+{% block title %}Community | NeoTrade AI{% endblock %}
+
+{% block content %}
+<style>
+    /* ---------- Layout ---------- */
+    .page-wrapper {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        padding: 2rem;
+    }
+
+    /* ---------- Sidebar ---------- */
+    .sidebar-x {
+        width: 240px;
+        background-color: #303030;
+        color: white;
+        padding: 1.5rem;
+        border-radius: 16px;
+        height: fit-content;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .sidebar-title {
+        font-size: 1.3rem;
+        font-weight: bold;
+        margin-bottom: 1.5rem;
+    }
+
+    .sidebar-menu {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+        .sidebar-menu li a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: color 0.2s;
+        }
+
+            .sidebar-menu li a:hover {
+                color: #1d9bf0;
+            }
+
+    /* ---------- Feed Container ---------- */
+    .x-feed-container {
+        max-width: 12000px;
+        min-width: 1000px;
+        width: 100%;
+        background-color: #1B1C1E;
+        color: #eee;
+        padding: 2rem;
+        border-radius: 16px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.5);
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    /* ---------- New Post Form ---------- */
+    .post-form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 2rem;
+    }
+
+        .post-form textarea {
+            resize: none;
+            background-color: #333333;
+            border: 1px solid #333;
+            color: #fff;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .post-form button {
+            align-self: flex-end;
+            padding: 0.6rem 1.2rem;
+            background-color: #1d9bf0;
+            color: #fff;
+            border: none;
+            border-radius: 9999px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+    .community-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 1.5rem;
+    }
+
+    /* ---------- Each Post ---------- */
+    .x-post {
+        background-color: #191919;
+        border-radius: 12px;
+        padding: 1rem;
+        margin-bottom: 1.2rem;
+        border: 1px solid #222;
+    }
+
+    .x-post-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.6rem;
+    }
+
+    .x-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        margin-right: 1rem;
+    }
+
+    .x-post-userinfo {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .x-username {
+        font-weight: bold;
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    .x-handle {
+        font-size: 0.9rem;
+        color: #888;
+        margin: 0;
+    }
+
+    .x-timestamp {
+        font-size: 0.8rem;
+        color: #555;
+        margin-top: 2px;
+    }
+
+    .x-post-content {
+        white-space: pre-line;
+        margin: 0.6rem 0 1rem;
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    /* ---------- Post Actions ---------- */
+    .x-post-actions {
+        display: flex;
+        gap: 1.5rem;
+        font-size: 0.9rem;
+        color: #aaa;
+    }
+
+        .x-post-actions span {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.2s;
+        }
+
+            .x-post-actions span:hover {
+                color: #fff;
+            }
+</style>
+
+<div style="display: flex; justify-content: center; gap: 2rem; padding: 2rem;">
+    <!-- LEFT: Sidebar -->
+    <div class="sidebar-x">
+        <h2 class="sidebar-title">Menu</h2>
+        <ul class="sidebar-menu">
+            <li><a href="#"><span>🔍</span> Search</a></li>
+            <li><a href="#"><span>🔔</span> Notifications</a></li>
+            <li><a href="#"><span>✉️</span> Messages</a></li>
+        </ul>
+    </div>
+
+    <!-- RIGHT: Feed -->
+    <div class="x-feed-container">
+        <form action="{{ url_for('new_post') }}" method="POST" class="post-form">
+            <textarea name="content" placeholder="What’s happening?" rows="2" required></textarea>
+            <button type="submit">Post</button>
+        </form>
+
+        <h2 class="community-title">Community</h2>
+
+        {% for post in posts %}
+        <div class="x-post">
+            <div class="x-post-header">
+                <img src="{{ post.profile_pic }}" alt="Profile" class="x-avatar">
+                <div class="x-post-userinfo">
+                    <p class="x-username">{{ post.display_name }}</p>
+                    <p class="x-handle">@{{ post.user_id }}</p>
+                    <p class="x-timestamp">{{ post.timestamp.strftime('%b %d, %Y %I:%M %p') }}</p>
+                </div>
+            </div>
+            <div class="x-post-content">{{ post.content }}</div>
+            <div class="x-post-actions">
+                <span>💬 0</span>
+                <span>❤️ 0</span>
+                <span>👁️ 0</span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

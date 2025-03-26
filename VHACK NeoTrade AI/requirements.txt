@@ -4,3 +4,7 @@ scikit-learn
 matplotlib
 requests
 flask
+joblib
+asyncio
+google
+datetime

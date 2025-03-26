@@ -79,4 +79,102 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     });
+
+    // 💬 Tchat (Tutorial Chat) Logic
+    const tchatInput = document.getElementById("tchatInput");
+    const sendTchat = document.getElementById("sendTchat");
+    const tchatBody = document.getElementById("tchatBody");
+    const tchatBox = document.querySelector(".tutorial-right .chat-box");
+
+    sendTchat?.addEventListener("click", async () => {
+        const msg = tchatInput.value.trim();
+        if (msg !== "") {
+            const userMsg = document.createElement("p");
+            userMsg.textContent = msg;
+            userMsg.style.textAlign = "right";
+            userMsg.style.backgroundColor = "#d1e7dd";
+            userMsg.style.padding = "8px";
+            userMsg.style.borderRadius = "8px";
+            userMsg.style.marginBottom = "10px";
+            tchatBody.appendChild(userMsg);
+            tchatInput.value = "";
+            tchatBody.scrollTop = tchatBody.scrollHeight;
+
+            try {
+                const res = await fetch("/tchat", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ message: msg })
+                });
+
+                const data = await res.json();
+
+                const reply = document.createElement("p");
+                reply.textContent = data.reply;
+                reply.className = "bot-msg";
+                tchatBody.appendChild(reply);
+                tchatBody.scrollTop = tchatBody.scrollHeight;
+
+            } catch (error) {
+                const errorMsg = document.createElement("p");
+                errorMsg.textContent = "Error contacting Tchat.";
+                errorMsg.className = "bot-msg";
+                tchatBody.appendChild(errorMsg);
+            }
+        }
+    });
+
+    // 🟦 Make chat box draggable
+    function makeChatDraggable(chatBox) {
+        const header = chatBox.querySelector('.chat-header');
+        let isDragging = false;
+        let offsetX, offsetY;
+
+        header?.addEventListener('mousedown', function (e) {
+            isDragging = true;
+            offsetX = e.clientX - chatBox.getBoundingClientRect().left;
+            offsetY = e.clientY - chatBox.getBoundingClientRect().top;
+            chatBox.style.position = 'fixed';
+        });
+
+        document.addEventListener('mousemove', function (e) {
+            if (isDragging) {
+                chatBox.style.left = (e.clientX - offsetX) + 'px';
+                chatBox.style.top = (e.clientY - offsetY) + 'px';
+                chatBox.style.right = 'auto';
+            }
+        });
+
+        document.addEventListener('mouseup', function () {
+            isDragging = false;
+        });
+    }
+
+    if (chatBox) makeChatDraggable(chatBox);
+    if (tchatBox) makeChatDraggable(tchatBox);
+
 });
+
+function fetchSignalPanel() {
+    fetch('/latest_signal')
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById("signal-status").innerHTML = formatSignal(data.signal);
+            document.getElementById("entry-price").textContent = data.entry_price;
+            document.getElementById("stop-loss").textContent = data.stop_loss;
+            document.getElementById("take-profit").textContent = data.take_profit;
+            document.getElementById("profit-loss").textContent = data.pnl;
+            document.getElementById("last-update").textContent = data.last_updated;
+        });
+}
+
+function formatSignal(signal) {
+    if (signal === "BUY") return `<span class="dot green"></span> BUY`;
+    if (signal === "SELL") return `<span class="dot red"></span> SELL`;
+    return `<span class="dot yellow"></span> HOLD`;
+}
+
+// Trigger every 15 minutes
+setInterval(fetchSignalPanel, 15 * 60 * 1000);
+fetchSignalPanel(); // Call immediately on load too
+
